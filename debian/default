@@ -1,0 +1,4 @@
+# Configuration for syslog-canary
+
+ARGS=""
+COMMAND="/etc/init.d/syslog-ng restart"

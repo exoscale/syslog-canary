@@ -1,0 +1,12 @@
+# syslog-canary - monitor /dev/log
+
+description "syslog canary"
+start on runlevel [2345]
+stop on runlevel [016]
+
+respawn
+
+script
+  . /etc/default/syslog-canary
+  exec /usr/bin/syslog-canary $ARGS $COMMAND
+end script
