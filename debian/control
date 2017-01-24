@@ -1,9 +1,10 @@
 Source: syslog-canary
 Maintainer: Vincent Bernat <bernat@debian.org>
 Build-Depends: debhelper (>= 9),
-               lsb-release
+               lsb-release,
+               dh-systemd
 
 Package: syslog-canary
 Architecture: all
 Description: monitor /dev/log and restart syslog daemon on failures
-Depends: python
+Depends: ${misc:Depends}, python

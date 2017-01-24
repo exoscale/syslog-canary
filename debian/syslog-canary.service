@@ -1,0 +1,12 @@
+[Unit]
+Description=syslog-canary
+ConditionPathExists=/etc/default/syslog-canary
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/syslog-canary
+ExecStart=/usr/bin/syslog-canary $ARGS $COMMAND
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
