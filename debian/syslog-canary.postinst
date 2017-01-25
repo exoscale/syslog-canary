@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-
-initctl reload-configuration > /dev/null 2> /dev/null || true
-
-#DEBHELPER#
