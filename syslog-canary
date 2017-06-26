@@ -38,21 +38,21 @@ except AttributeError:
             raise RuntimeError("no monotonic clock available "
                                "(pip install monotonic)")
 
+        import ctypes
+        import ctypes.util
+        try:
+            clock_gettime = ctypes.CDLL(ctypes.util.find_library('c'),
+                                        use_errno=True).clock_gettime
+        except AttributeError:
+            clock_gettime = ctypes.CDLL(ctypes.util.find_library('rt'),
+                                        use_errno=True).clock_gettime
+
+        class timespec(ctypes.Structure):
+            """Time specification, as described in clock_gettime(3)."""
+            _fields_ = (('tv_sec', ctypes.c_long),
+                        ('tv_nsec', ctypes.c_long))
+
         def monotonic():
-            import ctypes
-            import ctypes.util
-            try:
-                clock_gettime = ctypes.CDLL(ctypes.util.find_library('c'),
-                                            use_errno=True).clock_gettime
-            except AttributeError:
-                clock_gettime = ctypes.CDLL(ctypes.util.find_library('rt'),
-                                            use_errno=True).clock_gettime
-
-            class timespec(ctypes.Structure):
-                """Time specification, as described in clock_gettime(3)."""
-                _fields_ = (('tv_sec', ctypes.c_long),
-                            ('tv_nsec', ctypes.c_long))
-
             ts = timespec()
             if clock_gettime(1, ctypes.pointer(ts)):
                 errno = ctypes.get_errno()
