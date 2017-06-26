@@ -54,7 +54,7 @@ except AttributeError:
 
         def monotonic():
             ts = timespec()
-            if clock_gettime(1, ctypes.pointer(ts)):
+            if clock_gettime(1, ctypes.byref(ts)):
                 errno = ctypes.get_errno()
                 raise OSError(errno, os.strerror(errno))
             return ts.tv_sec + ts.tv_nsec / 1.0e9
