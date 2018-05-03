@@ -1,4 +1,4 @@
-syslog-canary (0-0) UNRELEASED; urgency=medium
+syslog-canary (0.0-0) UNRELEASED; urgency=medium
 
   * Fake entry.
 
