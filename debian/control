@@ -1,8 +1,7 @@
 Source: syslog-canary
 Maintainer: Vincent Bernat <bernat@debian.org>
-Build-Depends: debhelper (>= 9),
-               lsb-release,
-               dh-systemd
+Build-Depends: debhelper (>= 9.20160709) | dh-systemd,
+               lsb-release
 
 Package: syslog-canary
 Architecture: all
