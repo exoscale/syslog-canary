@@ -6,4 +6,5 @@ Build-Depends: debhelper (>= 9.20160709) | dh-systemd,
 Package: syslog-canary
 Architecture: all
 Description: monitor /dev/log and restart syslog daemon on failures
-Depends: ${misc:Depends}, python
+Depends: ${misc:Depends},
+         python | python3
